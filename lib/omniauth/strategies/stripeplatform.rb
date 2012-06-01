@@ -12,8 +12,8 @@ module OmniAuth
 
       option :client_options, {
         :site => 'https://manage.stripe.com',
-        :authorize_url => 'https://manage.stripe.com/oauth2/authorize',
-        :token_url => 'https://manage.stripe.com/oauth2/token'
+        :authorize_url => '/oauth2/authorize',
+        :token_url => '/oauth2/token'
       }
 
       info do
