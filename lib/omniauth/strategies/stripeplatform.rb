@@ -2,6 +2,9 @@ require 'omniauth/strategies/oauth2'
 require 'base64'
 require 'openssl'
 require 'rack/utils'
+require 'oauth2'
+require 'stripe'
+
 
 module OmniAuth
   module Strategies
@@ -26,7 +29,7 @@ module OmniAuth
 
       option :authorize_options, [:scope]
 	
-      set :client, OAuth2::Client.new(settings.client_id, '', options)
+     set :client, OAuth2::Client.new(settings.client_id, '', options)
 
     code = params[:code]
 
