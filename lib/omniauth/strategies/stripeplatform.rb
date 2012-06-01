@@ -32,5 +32,4 @@ module OmniAuth
     end
   end
 end
-
-OmniAuth.config.add_camelization 'testoauth2strategy', 'TestOAuth2Strategy'require 'omniauth/strategies/oauth2'
+#OmniAuth.config.add_camelization 'testoauth2strategy', 'TestOAuth2Strategy'require 'omniauth/strategies/oauth2'
