@@ -8,7 +8,6 @@ module OmniAuth
   module Strategies
     class Stripeplatform < OmniAuth::Strategies::OAuth2
      class NoAuthorizationCodeError < StandardError; end
-      code = params[:code]
 
       option :client_options, {
         :site => 'https://manage.stripe.com',
@@ -18,7 +17,6 @@ module OmniAuth
 
    def request_phase
      redirect client.code.authorize_url({:redirect_uri => callback_url}.merge(options.authorize_params))
-
       end
 
       def callback_phase
