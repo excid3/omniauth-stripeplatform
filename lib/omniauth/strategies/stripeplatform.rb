@@ -9,6 +9,7 @@ module OmniAuth
   module Strategies
     class Stripeplatform
       include OmniAuth::Strategy
+      auth_redirect = "https://manage.stripe.com/oauth2/authorize"
 	# receive parameters from the strategy declaration and save them
       def initialize(app, secret, auth_redirect, options = {})
         @secret = secret
@@ -41,10 +42,7 @@ module OmniAuth
       # normalize user's data according to http://github.com/intridea/omniauth/wiki/Auth-Hash-Schema
       def auth_hash
         OmniAuth::Utils.deep_merge(super(), {
-          'uid' => @uid,
           'user_info' => {
-            'name'     => @username,
-            'nickname' => @username,
           }
         })
       end
