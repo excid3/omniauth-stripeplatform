@@ -7,9 +7,8 @@ require 'stripe'
 
 module OmniAuth
   module Strategies
-    class StripePlatform
+    class Stripeplatform
       include OmniAuth::Strategy
-
 	# receive parameters from the strategy declaration and save them
       def initialize(app, secret, auth_redirect, options = {})
         @secret = secret
