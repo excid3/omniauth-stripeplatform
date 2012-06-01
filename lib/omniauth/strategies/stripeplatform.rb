@@ -15,14 +15,8 @@ module OmniAuth
       }
 
    def request_phase
-        OmniAuth::Form.build(
-          :title => (options[:title] || "Identity Verification"),
-          :url => callback_path
-        ) do |f|
-          f.text_field 'Login', 'auth_key'
-          f.password_field 'Password', 'password'
-          f.html "<p align='center'><a href='#{registration_path}'>Create an Identity</a></p>"
-        end.to_response 
+     redirect client.auth_code.authorize_url({:redirect_uri => callback_url}.merge(options.authorize_params))
+
       end
 
       def callback_phase
