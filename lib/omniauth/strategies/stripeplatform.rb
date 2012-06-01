@@ -125,7 +125,7 @@ module OmniAuth
 
       def raw_signed_request
         request.params['signed_request'] ||
-       # request.cookies["fbsr_#{client.id}"]
+        request.cookies["fbsr_#{client.id}"]
       end
 
       ##
