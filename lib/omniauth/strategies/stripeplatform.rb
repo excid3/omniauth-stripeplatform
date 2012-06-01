@@ -1,8 +1,13 @@
 require 'omniauth/strategies/oauth2'
-require 'stripe'
+require 'base64'
+require 'openssl'
+require 'rack/utils'
+
 module OmniAuth
   module Strategies
     class Stripeplatform < OmniAuth::Strategies::OAuth2
+     class NoAuthorizationCodeError < StandardError; end
+
       option :name, 'stripeplatform'
 
       option :client_options, {
