@@ -16,7 +16,7 @@ module OmniAuth
       }
 
    def request_phase
-     redirect client.code.authorize_url({:redirect_uri => callback_url}.merge(options.authorize_params))
+     redirect client.auth_code.authorize_url({:redirect_uri => callback_url}.merge(options.authorize_params))
       end
 
       def callback_phase
