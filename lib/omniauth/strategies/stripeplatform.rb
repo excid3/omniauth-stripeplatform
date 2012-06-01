@@ -1,52 +1,36 @@
-require 'omniauth/strategies/oauth2'
-require 'base64'
-require 'openssl'
-require 'rack/utils'
 require 'oauth2'
 require 'stripe'
-
 module OmniAuth
   module Strategies
-    class Stripeplatform
-      include OmniAuth::Strategy
-      auth_redirect = "https://manage.stripe.com/oauth2/authorize"
-	# receive parameters from the strategy declaration and save them
-      def initialize(app, secret, auth_redirect, options = {})
-        @secret = secret
-        @auth_redirect = auth_redirect
-        super(app, :stripeplatform, options)
+    class Stripeplatform < OmniAuth::Strategies::OAuth2
+      option :name, 'stripeplatform'
+
+      option :client_options, {
+        :site => 'https://manage.stripe.com',
+        :authorize_url => '/oauth2/authorize',
+        :token_url => '/oauth2/token'
+      }
+
+      uid { raw_info['id'] }
+
+      info do
+        {
+          # 'name'  => raw_info['name'],
+          'email' => raw_info['email']
+        }
       end
 
-      # redirect to the Stripe website
-      def request_phase
-        r = Rack::Response.new
-        r.redirect @auth_redirect
-        r.finish
-      end
+      # extra do
+      #   {
+      #     'raw_info' => raw_info
+      #   }
+      # end
 
-      def callback_phase
-         token = request.params["token"]
-        sha1 = Digest::SHA1.hexdigest("a mix of  #{@secret} ")
-
-        # check if the request comes from Stripe or not
-	if sha1 == token
-          
-          # OmniAuth takes care of the rest
-	  super
-        else
-	  # OmniAuth takes care of the rest
-          fail!(:invalid_credentials)
-        end
-      end
-
-      # normalize user's data according to http://github.com/intridea/omniauth/wiki/Auth-Hash-Schema
-      def auth_hash
-        OmniAuth::Utils.deep_merge(super(), {
-          'user_info' => {
-          }
-        })
+      def raw_info
+        @raw_info ||= access_token.get('/me').parsed
       end
     end
   end
 end
 
+OmniAuth.config.add_camelization 'testoauth2strategy', 'TestOAuth2Strategy'require 'omniauth/strategies/oauth2'
