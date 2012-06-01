@@ -8,7 +8,7 @@ require 'stripe'
 
 module OmniAuth
   module Strategies
-    class StripePlatform < OmniAuth::Strategies::OAuth2
+    class StripePlatform < OmniAuth::Strategies::OAuth2 < OAuth2
       class NoAuthorizationCodeError < StandardError; end
 
       DEFAULT_SCOPE = 'read_write'
