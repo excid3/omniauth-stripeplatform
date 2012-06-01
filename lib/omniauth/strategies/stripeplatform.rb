@@ -3,6 +3,7 @@ require 'base64'
 require 'openssl'
 require 'rack/utils'
 require 'multi_json'
+require 'stripe'
 
 module OmniAuth
   module Strategies
@@ -14,7 +15,6 @@ module OmniAuth
         :authorize_url => 'https://manage.stripe.com/oauth2/authorize',
         :token_url => 'https://manage.stripe.com/oauth2/token'
       }
-uid { raw_info['id'] }
 
       info do
         {
@@ -22,19 +22,11 @@ uid { raw_info['id'] }
           }
            end
 
-def raw_info
-        access_token.options[:mode] = :query
-        @raw_info ||= access_token.get('/user').parsed
-      end
-
-      def email
-        raw_info['email'] || emails.first
-      end
-
-      def emails
-        access_token.options[:mode] = :query
-        @emails ||= access_token.get('/user/emails').parsed
-      end
+	 customer = Stripe::Customer.create({
+         :description => "Customer created through Stripe Platform OAuth application."
+		       }, access_token)
+ 
+	 @stripe_response = JSON.pretty_generate(customer.to_hash)
       
     end
   end
