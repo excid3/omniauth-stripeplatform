@@ -8,16 +8,18 @@ module OmniAuth
     class Stripeplatform < OmniAuth::Strategies::OAuth2
      class NoAuthorizationCodeError < StandardError; end
 
-	DEFAULT_SCOPE = 'read_write'
-
       option :client_options, {
         :site => 'https://manage.stripe.com',
         :authorize_url => '/oauth2/authorize',
         :token_url => '/oauth2/token'
       }
 
+     
+	
 
-      
+
+
+
       
     end
   end
