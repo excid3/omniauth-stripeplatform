@@ -11,23 +11,30 @@ module OmniAuth
 
       option :client_options, {
         :site => 'https://manage.stripe.com',
-        :authorize_url => '/oauth2/authorize',
-        :token_url => '/oauth2/token'
+        :authorize_url => 'https://manage.stripe.com/oauth2/authorize',
+        :token_url => 'https://manage.stripe.com/oauth2/token'
       }
+uid { raw_info['id'] }
 
-	uid do
-	  request.params[options.uid_field.to_s]
-	end
+      info do
+        {
+         'email' => email,
+          }
+           end
 
-	info do
-	  options.fields.inject({}) do |hash, field|
-		      hash[field] = request.params[field]
-		          hash
-			    end
-	end
+def raw_info
+        access_token.options[:mode] = :query
+        @raw_info ||= access_token.get('/user').parsed
+      end
 
+      def email
+        raw_info['email'] || emails.first
+      end
 
-
+      def emails
+        access_token.options[:mode] = :query
+        @emails ||= access_token.get('/user/emails').parsed
+      end
       
     end
   end
