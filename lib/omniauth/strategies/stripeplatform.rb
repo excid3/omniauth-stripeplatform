@@ -16,7 +16,7 @@ module OmniAuth
         :token_url => '/oauth2/token'
       }
 
-       option :access_token_options, {
+       option :token_options, {
 	      :headers => {'Authorization' => "Bearer yebV2wGX65K8tSfsFJZgCsuIi3Y0pIq2"},
               :param_name => 'access_token'
 		             }
