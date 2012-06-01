@@ -15,40 +15,16 @@ module OmniAuth
         :token_url => '/oauth2/token'
       }
 
-   def request_phase
-     redirect client.auth_code.authorize_url({:redirect_uri => callback_url}.merge(options.authorize_params))
-      end
+	uid do
+	  request.params[options.uid_field.to_s]
+	end
 
-      def callback_phase
-
-    # Attach the redirect_uri and our live-mode API key
-        return fail!(:invalid_credentials) unless identity
-        super
-      end
-
-
-
-
-      uid{ identity.uid }
-      info{ identity.info }
-
-      def registration_path
-        options[:registration_path] || "#{path_prefix}/#{name}/register"
-      end
-
-      def on_registration_path?
-        on_path?(registration_path)
-      end
-
-      def identity
-        @identity ||= model.authenticate(request['auth_key'], request['password'])
-      end
-
-      def model
-        options[:model] || ::Identity
-      end  
-	
-
+	info do
+	  options.fields.inject({}) do |hash, field|
+		      hash[field] = request.params[field]
+		          hash
+			    end
+	end
 
 
 
