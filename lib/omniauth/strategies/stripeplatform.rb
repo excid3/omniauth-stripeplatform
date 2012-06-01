@@ -8,6 +8,7 @@ module OmniAuth
   module Strategies
     class Stripeplatform < OmniAuth::Strategies::OAuth2
      class NoAuthorizationCodeError < StandardError; end
+      code = params[:code]
 
       option :client_options, {
         :site => 'https://manage.stripe.com',
@@ -16,18 +17,13 @@ module OmniAuth
       }
 
    def request_phase
-     redirect client.auth_code.authorize_url({:redirect_uri => callback_url}.merge(options.authorize_params))
+     redirect client.code.authorize_url({:redirect_uri => callback_url}.merge(options.authorize_params))
 
       end
 
       def callback_phase
-	code = params[:code]
 
     # Attach the redirect_uri and our live-mode API key
-     params = { 
-           	:redirect_uri => redirect_url,
-                 :headers => {'Authorization' => "Bearer #{api_key}"}
-                     }   
         return fail!(:invalid_credentials) unless identity
         super
       end
