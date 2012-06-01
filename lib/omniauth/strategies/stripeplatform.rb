@@ -16,6 +16,11 @@ module OmniAuth
         :token_url => '/oauth2/token'
       }
 
+       option :access_token_options, {
+              :header_format => 'Bearer %s',
+              :param_name => 'access_token'
+		             }
+
       info do
         {
         'email' => email,
