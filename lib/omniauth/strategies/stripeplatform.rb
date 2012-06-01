@@ -9,8 +9,6 @@ module OmniAuth
      class NoAuthorizationCodeError < StandardError; end
 
       option :name, 'stripeplatform'
-     
-      option :scope, 'read_write'
 
       option :client_options, {
         :site => 'https://manage.stripe.com',
