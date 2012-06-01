@@ -18,16 +18,17 @@ module OmniAuth
 
       info do
         {
-         'email' => email,
-          }
+        'email' => email,
+         }
            end
 
 	 customer = Stripe::Customer.create({
          :description => "Customer created through Stripe Platform OAuth application."
-		       }, token)
- 
+		       }, access_token)
 	 @stripe_response = JSON.pretty_generate(customer.to_hash)
       
+
+
     end
   end
 end
