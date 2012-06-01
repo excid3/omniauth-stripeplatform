@@ -18,7 +18,7 @@ module OmniAuth
 
        option :access_token_options, {
               :header_format => 'OAuth %s',
-	      :headers => {'Authorization' => "Bearer #{token_options}"},
+	      :headers => {'Authorization' => "Bearer #{options.client_secret}"},
               :param_name => 'access_token'
 		             }
 
