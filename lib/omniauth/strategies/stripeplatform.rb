@@ -35,33 +35,6 @@ module OmniAuth
         end
       end
 
-      uid do
-        request.params['username']
-      end
-
-      info do
-        entries = raw_info['feed']['entry']
-        if entries.kind_of?(Array)
-          {
-              :email_entries => entries.map{|x|x["content"]["Email"]["EmailAddress"]}
-          }
-        else 
-          {
-              :email => entries["content"]["Email"]["EmailAddress"]
-          }
-        end
-      end
-
-      extra do
-        { 'raw_info' => raw_info }
-      end
-
-      def raw_info
-        @raw_info ||= MultiXml.parse(access_token.get("https://api.constantcontact.com/ws/customers/" + request.params['username'] + "/settings/emailaddresses").body)
-      end
-	
-
-      
 
     end
   end
