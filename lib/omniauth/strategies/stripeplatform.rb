@@ -21,7 +21,8 @@ module OmniAuth
 
       option :access_token_options, {
         :header_format => 'OAuth %s',
-        :param_name => 'access_token'
+        :param_name => 'access_token',
+	:token_type => 'bearer'
       }
 
       info do
