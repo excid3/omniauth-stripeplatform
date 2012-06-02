@@ -19,7 +19,7 @@ module OmniAuth
 		             }
 
       option :access_token_options, {
-        :header_format => 'OAuth %s',
+        :header_format => "OAuth FkOoMNBYWI63OiHUbDnHnLZSvc23T2BO",
         :param_name => 'access_token',
       }
 
