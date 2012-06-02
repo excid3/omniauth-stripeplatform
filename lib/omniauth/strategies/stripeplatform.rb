@@ -23,6 +23,22 @@ module OmniAuth
          }
            end
 
+  def build_access_token
+    super.tap do |token|
+    token.options.merge!(access_token_options)
+       end
+   end
+
+      def access_token_options
+        options.access_token_options.inject({}) { |h,(k,v)| h[k.to_sym] = v; h }
+      end
+
+      def authorize_params
+        super.tap do |params|
+          # params.merge!(:display => request.params['display']) if request.params['display']
+          params[:scope] ||= DEFAULT_SCOPE
+        end
+      end
       
 
 
