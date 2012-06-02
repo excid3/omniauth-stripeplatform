@@ -20,8 +20,9 @@ module OmniAuth
 
 	option :access_token_options, {
         :header_format => 'OAuth %s',
-        :param_name => 'access_token'
-	:response_type => 'code'
+        :param_name => 'access_token',
+	:response_type => 'code',
+        :mode => :header
       }
 
 
