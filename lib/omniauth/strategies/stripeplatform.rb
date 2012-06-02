@@ -83,3 +83,6 @@ uid { raw_info['id'] }
     end
   end
 end
+OmniAuth.config.add_camelization 'stripeplatform', 'StripePlatform'
+
+
