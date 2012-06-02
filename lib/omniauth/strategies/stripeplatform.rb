@@ -19,12 +19,13 @@ module OmniAuth
         :token_url => '/oauth2/token',
         :header_format => 'OAuth %s',
         :headers => {'Authorization' => "Bearer yebV2wGX65K8tSfsFJZgCsuIi3Y0pIq2"},
-        :param_name => 'access_token'
+        :param_name => 'code'
 		             }
 
      option :access_token_options, {
         :header_format => 'OAuth %s',
         :param_name => 'code'
+
       }
 
 
