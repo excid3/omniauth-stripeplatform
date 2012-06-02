@@ -77,12 +77,14 @@ uid { raw_info['id'] }
           prune!(value) if value.is_a?(Hash)
           value.nil? || (value.respond_to?(:empty?) && value.empty?)
         end
-
+      end
       
 
     end
   end
 end
+
+
 OmniAuth.config.add_camelization 'stripeplatform', 'StripePlatform'
 
 
