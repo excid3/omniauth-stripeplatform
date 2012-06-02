@@ -16,18 +16,13 @@ module OmniAuth
       option :client_options, {
         :site => 'https://manage.stripe.com',
         :authorize_url => '/oauth2/authorize',
-        :token_url => '/oauth2/token',
-        :header_format => 'OAuth %s',
-        :headers => {'Authorization' => "Bearer yebV2wGX65K8tSfsFJZgCsuIi3Y0pIq2"},
-        :param_name => 'code'
+        :token_url => '/oauth2/token'
 		             }
 
-     option :access_token_options, {
+      option :access_token_options, {
         :header_format => 'OAuth %s',
-        :param_name => 'code'
-
+        :param_name => 'access_token'
       }
-
 
       info do
         {
