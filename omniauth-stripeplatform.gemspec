@@ -4,7 +4,7 @@ require 'omniauth/stripeplatform/version'
 
 Gem::Specification.new do |s|
   s.name     = 'omniauth-stripeplatform'
-  s.version  = OmniAuth::Stripeplatform::VERSION
+  s.version  = OmniAuth::StripePlatform::VERSION
   s.authors  = ['Anthony Joseph']
   s.email    = ['anthony@makerbreaker.com']
   s.summary  = 'Stripe Platform strategy for OmniAuth, adapted from omniauth-facebook'
