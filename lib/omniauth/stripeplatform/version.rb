@@ -1,5 +1,5 @@
 module OmniAuth
-  module Stripeplatform
-    VERSION = "0.0.1"
+  module StripePlatform
+    VERSION = "0.0.2"
   end
 end
