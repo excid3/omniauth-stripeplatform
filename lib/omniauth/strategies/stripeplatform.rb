@@ -17,12 +17,6 @@ module OmniAuth
         :authorize_url => '/oauth2/authorize',
         :token_url => '/oauth2/token'
 		             }
-
-      option :access_token_options, {
-        :header_format => "OAuth FkOoMNBYWI63OiHUbDnHnLZSvc23T2BO",
-        :param_name => 'access_token',
-      }
-
       info do
         {
         'email' => email,
