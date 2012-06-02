@@ -1,12 +1,11 @@
-require 'omniauth-oauth2'
 require 'omniauth/strategies/oauth2'
-require 'omniauth'
-require 'oauth2'
 
 
 module OmniAuth
   module Strategies
     class StripePlatform < OmniAuth::Strategies::OAuth2
+
+      DEFAULT_SCOPE - 'read_write'
 	
       option :name, "stripeplatform"
 
