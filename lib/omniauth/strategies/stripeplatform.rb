@@ -10,14 +10,23 @@ module OmniAuth
     class Stripeplatform < OmniAuth::Strategies::OAuth2
      class NoAuthorizationCodeError < StandardError; end
 
+      option :name, "stripeplatform"
+
+
       option :client_options, {
         :site => 'https://manage.stripe.com',
         :authorize_url => '/oauth2/authorize',
         :token_url => '/oauth2/token',
-	      :header_format => 'OAuth %s',
-	      :headers => {'Authorization' => "Bearer yebV2wGX65K8tSfsFJZgCsuIi3Y0pIq2"},
-              :param_name => 'access_token'
+        :header_format => 'OAuth %s',
+        :headers => {'Authorization' => "Bearer yebV2wGX65K8tSfsFJZgCsuIi3Y0pIq2"},
+        :param_name => 'access_token'
 		             }
+
+     option :access_token_options, {
+        :header_format => 'OAuth %s',
+        :param_name => 'code'
+      }
+
 
       info do
         {
