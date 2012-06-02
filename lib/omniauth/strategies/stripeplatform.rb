@@ -8,9 +8,8 @@ require 'stripe'
 module OmniAuth
   module Strategies
     class Stripeplatform < OmniAuth::Strategies::OAuth2
-     class NoAuthorizationCodeError < StandardError; end
 
-      option :name, "stripeplatform"
+     option :name, "stripeplatform"
 
 
       option :client_options, {
@@ -22,7 +21,6 @@ module OmniAuth
       option :access_token_options, {
         :header_format => 'OAuth %s',
         :param_name => 'access_token',
-	:token_type => 'bearer'
       }
 
       info do
