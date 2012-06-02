@@ -2,6 +2,8 @@ require 'omniauth/strategies/oauth2'
 module OmniAuth
   module Strategies
     class Stripeplatform < OmniAuth::Strategies::OAuth2
+	
+      option :name, "stripeplatform"
 
 
       option :client_options, {
@@ -11,6 +13,7 @@ module OmniAuth
 		             }
 	option :token_params, {
 	:parse => :json
+
 	}
 
       
