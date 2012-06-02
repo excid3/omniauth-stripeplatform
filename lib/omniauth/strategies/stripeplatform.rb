@@ -9,8 +9,6 @@ module OmniAuth
   module Strategies
     class Stripeplatform < OmniAuth::Strategies::OAuth2
 
-     option :name, "stripeplatform"
-
 
       option :client_options, {
         :site => 'https://manage.stripe.com',
@@ -18,14 +16,6 @@ module OmniAuth
         :token_url => '/oauth2/token'
 		             }
 
-	option :token_options, {
-        :header_format => 'OAuth %s',
-        :param_name => 'access_token',
-	:response_type => 'code'
-      }
-
-
-	
 uid { raw_info['id'] }
       
       info do
