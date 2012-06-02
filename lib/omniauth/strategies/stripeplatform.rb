@@ -11,8 +11,19 @@ module OmniAuth
 
 
       option :client_options, {
-        :site => 'https://manage.stripe.com'
+        :site => 'https://manage.stripe.com',
+	:authorize_url => '/oauth/authorize',
+	:token_url => '/oauth/token'
 		             }
+	option :token_params, {
+	:parse => :query
+	}
+
+	option :access_token_options, {
+        :header_format => 'OAuth %s',
+        :param_name => 'access_token'
+      }
+
 
 uid { raw_info['id'] }
       
