@@ -6,7 +6,7 @@ require 'oauth2'
 
 module OmniAuth
   module Strategies
-    class Stripeplatform < OmniAuth::Strategies::OAuth2
+    class StripePlatform < OmniAuth::Strategies::OAuth2
 	
       option :name, "stripeplatform"
 
