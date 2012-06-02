@@ -1,4 +1,4 @@
-require 'omniauth/strategies/oauth2'
+require 'omniauth-oauth2'
 module OmniAuth
   module Strategies
     class Stripeplatform < OmniAuth::Strategies::OAuth2
