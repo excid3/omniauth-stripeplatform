@@ -30,14 +30,7 @@ uid { raw_info['id'] }
       
       info do
         prune!({
-          'nickname' => raw_info['username'],
-          'name' => raw_info['full_name'],
-          'image' => raw_info['avatar_url'],
-          'description' => raw_info['description'],
-          'urls' => {
-            'Website' => raw_info['website']
-          },
-          'location' => raw_info['city']
+          'email' => raw_info['email']
         })
       end
       
@@ -55,7 +48,7 @@ uid { raw_info['id'] }
       end
       
       def raw_info
-        @raw_info ||= access_token.get('/me.json').parsed
+        @raw_info ||= access_token.get('').parsed
       end
       
       def build_access_token
