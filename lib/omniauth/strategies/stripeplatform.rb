@@ -16,6 +16,14 @@ module OmniAuth
 	:authorize_url => '/oauth/authorize',
 	:token_url => '/oauth/token'
 		             }
+	option :token_params, {
+        :parse => :query
+      }
+
+      option :access_token_options, {
+        :param_name => 'access_token'
+      }
+
 
        uid{ raw_info['id'] }
 
