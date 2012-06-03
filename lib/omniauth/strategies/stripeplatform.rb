@@ -18,15 +18,20 @@ module OmniAuth
 		option :token_params, {
 		  :parse => :query
 			}
-
 	option :access_token_options, {
-	  :param_name => 'access_token'
-		}
+  :header_format => "OAuth %s",
+  :param_name => 'access_token'
+}
 
-		option :authorize_params, {
-		  :header_format => "Bearer %s(:client_secret)"
-			}
+option :authorize_params, {
+  :header_format => "Bearer %s(:client_secret)"
+}
+  
 
+      def request_phase
+        authorize_params[:headers] << "Authorize: Bearer #{client.secret}"
+        redirect client.auth_code.authorize_url({:redirect_uri => callback_url}.merge(authorize_params))
+      end
 
 
 
