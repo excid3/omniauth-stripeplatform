@@ -10,9 +10,6 @@ module OmniAuth
 
       option :name, "stripeplatform"
 
-	OmniAuth.logger.debug "My info message"
-
-
       option :client_options, {
         :site => 'https://manage.stripe.com',
 	:authorize_url => '/oauth/authorize',
@@ -24,10 +21,13 @@ module OmniAuth
       }
 
 	option :access_token_options, {
-        :header_format => "Bearer: %s(:client_secret)",
-        :param_name => 'access_token'
-      }
+	  :header_format => "OAuth %s",
+	  :param_name => 'access_token'
+		}	
 
+	option :authorize_params, {
+	  :header_format => "Bearer %s(:client_secret)"
+	}
 
 
        uid{ raw_info['id'] }
