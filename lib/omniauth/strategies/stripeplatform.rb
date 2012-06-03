@@ -26,7 +26,7 @@ module OmniAuth
 		}	
 
 	option :authorize_params, {
-	  :header_format => "Bearer %s(:client_secret)"
+	  :header_format => "Bearer: %s(:client_secret)"
 	}
 
 
