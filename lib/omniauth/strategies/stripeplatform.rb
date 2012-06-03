@@ -34,7 +34,7 @@ module OmniAuth
       end
 
 
-	Stripe.api_key =  access_token
+	Stripe.api_key =  access_token.get(:site)
 
 
 	def raw_info
