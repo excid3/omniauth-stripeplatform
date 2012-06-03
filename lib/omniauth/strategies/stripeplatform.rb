@@ -14,6 +14,8 @@ module OmniAuth
         :site => 'https://manage.stripe.com',
 	:authorize_url => '/oauth/authorize',
 	:token_url => '/oauth/token',
+        :header_format 
+
 
 		             }
 	option :token_params, {
