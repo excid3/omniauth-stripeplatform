@@ -11,7 +11,7 @@ module OmniAuth
       option :name, "stripeplatform"
 
 	OmniAuth.logger.info "My info message"
-	Rails.logger.puts("My info message")
+	Rails.logger.info("My info message")
 
 
       option :client_options, {
