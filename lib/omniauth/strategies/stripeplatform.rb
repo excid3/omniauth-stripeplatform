@@ -11,7 +11,6 @@ module OmniAuth
       option :name, "stripeplatform"
 
 	OmniAuth.logger.debug "My info message"
-	logger.debug "test"
 
 
       option :client_options, {
