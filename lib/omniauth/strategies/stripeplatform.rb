@@ -41,7 +41,7 @@ module OmniAuth
 	@raw_info = Stripe::Customer.create(
       :description => "Customer created through Stripe Platform OAuth application."
 	    )  
-
+	end
 
 	
 
