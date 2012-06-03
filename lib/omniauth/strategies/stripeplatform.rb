@@ -9,9 +9,10 @@ module OmniAuth
      DEFAULT_SCOPE = 'read_write'
 
       option :name, "stripeplatform"
-	Rails.logger.info "My info message"
-Rails.logger.debug "My debugging message"
-Rails.logger.warn "My warning message"
+
+	OmniAuth.logger.info "My info message"
+	OmniAuth.logger.debug "My debugging message"
+	OmniAuth.logger.warn "My warning message"
 
 
       option :client_options, {
