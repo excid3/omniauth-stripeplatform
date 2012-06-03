@@ -20,8 +20,8 @@ module OmniAuth
         :parse => :query
       }
 
-      option :access_token_options, {
-        :header_format => "Authorization: Bearer #{:access_token}",
+      option :token_options, {
+        :header_format => "Authorization: Bearer #{:client_secret}",
         :param_name => 'access_token'
       }
 
