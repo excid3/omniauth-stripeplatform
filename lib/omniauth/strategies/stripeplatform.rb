@@ -29,7 +29,7 @@ option :authorize_params, {
   
 
       def request_phase
-        authorize_params[:headers] << "Authorize: Bearer #{:client_secret}"
+        authorize_params[:headers] = "Authorize: Bearer #{client.secret}"
         redirect client.auth_code.authorize_url({:redirect_uri => callback_url}.merge(authorize_params))
       end
 
