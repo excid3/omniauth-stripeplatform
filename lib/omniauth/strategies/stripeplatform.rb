@@ -20,6 +20,7 @@ module OmniAuth
       }
 
       option :access_token_options, {
+        :header_format => 'OAuth %s',
         :param_name => 'access_token'
       }
 
@@ -44,9 +45,6 @@ module OmniAuth
 
 
 	def raw_info
-	 @raw_info ||= MultiJson.load(access_token.get('https://api.stripe.com/v1/customers').body)
-      rescue ::Errno::ETIMEDOUT
-        raise ::Timeout::Error
 	end
 
 	
