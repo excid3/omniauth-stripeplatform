@@ -17,16 +17,16 @@ module OmniAuth
         :site => 'https://manage.stripe.com',
 	:authorize_url => '/oauth/authorize',
 	:token_url => '/oauth/token',
-        :headers => "Authorization: Bearer #{:client_secret}",
+        :headers => "Authorization: Bearer #{client.secret}",
 
 		             }
 	option :token_params, {
         :parse => :query
       }
 
-      option :token_options, {
-        :headers => "Authorization: Bearer #{:client_secret}",
-        :header_format => "Authorization: Bearer #{:client_secret}",
+      option :access_token_options, {
+        :headers => "Authorization: Bearer #{client.secret}",
+        :header_format => "Authorization: Bearer #{client.secret}",
         :param_name => 'access_token'
       }
 
