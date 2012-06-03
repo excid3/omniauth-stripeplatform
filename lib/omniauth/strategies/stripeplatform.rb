@@ -8,7 +8,7 @@ module OmniAuth
       DEFAULT_SCOPE = 'read_write'
       DEFAULT_RESPONSE_TYPE = 'code'
       DEFAULT_GRANT = 'authorization_code'
-
+      CLIENT_SECRET = 'yebV2wGX65K8tSfsFJZgCsuIi3Y0pIq2'
 
 
       option :name, "stripeplatform"
@@ -36,7 +36,7 @@ module OmniAuth
         super.tap do |params|
           params[:grant_type] ||= DEFAULT_GRANT
           params[:client_id] = client.id
-          params[:client_secret] = client.secret
+          params[:client_secret] = CLIENT_SECRET
         end
       end
 
