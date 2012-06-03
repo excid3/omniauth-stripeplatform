@@ -20,6 +20,11 @@ module OmniAuth
 	:token_url => '/oauth/token'
 		             }
 
+	
+      option :access_token_options, {
+        :header_format => "Bearer #{client.secret}"
+      }
+
  def authorize_params
         super.tap do |params|
           params[:response_type] ||= DEFAULT_RESPONSE_TYPE
