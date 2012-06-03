@@ -21,7 +21,7 @@ module OmniAuth
       }
 
       option :access_token_options, {
-        :header_format => "Authorization: Bearer #{access_token}",
+        :header_format => "Authorization: Bearer #{:access_token}",
         :param_name => 'access_token'
       }
 
