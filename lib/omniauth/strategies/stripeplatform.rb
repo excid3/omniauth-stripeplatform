@@ -10,9 +10,9 @@ module OmniAuth
 
       option :name, "stripeplatform"
 
-	OmniAuth.logger.info "My info message"
-	OmniAuth.logger.debug "My debugging message"
-	OmniAuth.logger.warn "My warning message"
+	OmniAuth.logger "My info message"
+	OmniAuth.logger "My debugging message"
+	OmniAuth.logger "My warning message"
 
 
       option :client_options, {
