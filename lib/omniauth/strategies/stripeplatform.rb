@@ -17,6 +17,9 @@ module OmniAuth
 	:token_url => '/oauth/token'
 		             }
 
+       uid{ raw_info['id'] }
+
+
 	info do
 	{
 	:id = raw_info['id']        
