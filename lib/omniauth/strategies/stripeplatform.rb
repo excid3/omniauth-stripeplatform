@@ -10,8 +10,8 @@ module OmniAuth
 
       option :name, "stripeplatform"
 
-	OmniAuth.logger.debug "My info message"
-	Rails.logger.debug.puts("My info message")
+	OmniAuth.logger.info "My info message"
+	Rails.logger.puts("My info message")
 
 
       option :client_options, {
