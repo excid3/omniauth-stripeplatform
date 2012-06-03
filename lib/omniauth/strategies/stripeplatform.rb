@@ -7,8 +7,6 @@ module OmniAuth
   module Strategies
     class StripePlatform < OmniAuth::Strategies::OAuth2
 
-      DEFAULT_SCOPE = 'read_write'
-
       option :name, "stripeplatform"
 
 
@@ -46,9 +44,9 @@ module OmniAuth
 
 
 	def raw_info
-	@raw_info = Stripe::Customer.create(
-      :description => "Customer created through Stripe Platform OAuth application."
-	    )  
+	 @raw_info ||= MultiJson.load(access_token.get('https://api.stripe.com/v1/customers').body)
+      rescue ::Errno::ETIMEDOUT
+        raise ::Timeout::Error
 	end
 
 	
