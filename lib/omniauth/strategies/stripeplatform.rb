@@ -1,4 +1,5 @@
 require 'omniauth-oauth2'
+require 'stripe'
 
 
 module OmniAuth
@@ -15,6 +16,26 @@ module OmniAuth
 	:authorize_url => '/oauth/authorize',
 	:token_url => '/oauth/token'
 		             }
+
+	info do
+        {
+        }
+      end
+
+      extra do
+        {
+          'raw_info' => raw_info
+        }
+      end
+
+
+	Stripe.api_key =  access_token
+
+
+	def raw_info
+	@raw_info = Stripe::Customer.create(
+      :description => "Customer created through Stripe Platform OAuth application."
+	    )  
 
 
 	
