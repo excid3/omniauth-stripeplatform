@@ -14,22 +14,18 @@ module OmniAuth
         :site => 'https://manage.stripe.com',
 	:authorize_url => '/oauth/authorize',
 	:token_url => '/oauth/token',
-        :header_format 
-
-
+        :header_format => "Authorization: Bearer %s(:client_secret)"
 		             }
+
+
 	option :token_params, {
         :parse => :query
       }
 
 	option :access_token_options, {
-	  :header_format => "OAuth %s",
 	  :param_name => 'access_token'
 		}	
 
-	option :authorize_params, {
-	  :header_format => "Bearer: %s(:client_secret)"
-	}
 
 
        uid{ raw_info['id'] }
