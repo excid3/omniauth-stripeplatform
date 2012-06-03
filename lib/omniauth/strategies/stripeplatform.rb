@@ -10,6 +10,7 @@ module OmniAuth
 
       option :name, "stripeplatform"
 
+	Rails.logger.info "My info message"
 
       option :client_options, {
         :site => 'https://manage.stripe.com',
