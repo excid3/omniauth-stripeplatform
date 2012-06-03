@@ -18,7 +18,9 @@ module OmniAuth
 		             }
 
 	info do
-        {
+	{
+	:id = raw_info['id']        
+
         }
       end
 
