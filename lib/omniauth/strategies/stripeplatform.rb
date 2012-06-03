@@ -21,10 +21,6 @@ module OmniAuth
 		             }
 
 	
-      option :access_token_options, {
-        :header_format => "Bearer #{CLIENT_SECRET}"
-      }
-
  def authorize_params
         super.tap do |params|
           params[:response_type] ||= DEFAULT_RESPONSE_TYPE
