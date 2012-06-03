@@ -1,4 +1,3 @@
-require 'omniauth/strategies/oauth2'
 require 'omniauth-oauth2'
 require 'stripe'
 
@@ -6,6 +5,8 @@ require 'stripe'
 module OmniAuth
   module Strategies
     class StripePlatform < OmniAuth::Strategies::OAuth2
+
+     DEFAULT_SCOPE = 'read_write'
 
       option :name, "stripeplatform"
 
@@ -20,9 +21,11 @@ module OmniAuth
       }
 
       option :access_token_options, {
-        :header_format => 'OAuth %s',
+        :header_format => "Authorization: Bearer #{access_token}",
         :param_name => 'access_token'
       }
+
+
 
 
        uid{ raw_info['id'] }
