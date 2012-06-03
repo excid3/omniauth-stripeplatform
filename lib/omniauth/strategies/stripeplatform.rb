@@ -1,4 +1,4 @@
-require 'omniauth/strategies/oauth2'
+require 'omniauth-oauth2'
 
 
 module OmniAuth
@@ -6,8 +6,6 @@ module OmniAuth
     class StripePlatform < OmniAuth::Strategies::OAuth2
 
       DEFAULT_SCOPE = 'read_write'
-      DEFAULT_RESPONSE_TYPE = 'code'
-      DEFAULT_GRANT = 'authorization_code'
 
       option :name, "stripeplatform"
 
@@ -18,9 +16,6 @@ module OmniAuth
 	:token_url => '/oauth/token'
 		             }
 
-	def request_phase
-        super
-       end	
 
 	
 
