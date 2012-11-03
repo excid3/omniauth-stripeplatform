@@ -29,7 +29,10 @@ module OmniAuth
 
       def request_phase
         authorize_params[:headers] = {:authorize => "Bearer #{client.secret}"}
-        redirect client.auth_code.authorize_url({:redirect_uri => callback_url}.merge(authorize_params))
+        redirect client.auth_code.authorize_url({
+          :redirect_uri => callback_url,
+          :stripe_user  => session["omniauth.params"]["stripe_user"]
+        }.merge(authorize_params))
       end
 
       uid{ raw_info['id'] }
